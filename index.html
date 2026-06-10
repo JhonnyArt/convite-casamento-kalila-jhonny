@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Convite de Casamento — Kalila & Jhonny">
+  <meta name="theme-color" content="#7a9fbe">
+  <title>Kalila & Jhonny — Convite de Casamento</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked paper-texture">
+
+  <!-- ════════════════════════════════════════
+       LOADING (J & K) — após abrir o convite
+       ════════════════════════════════════════ -->
+  <div id="loading-screen" class="hidden paper-texture" aria-hidden="true">
+    <div class="loading-monogram">
+      <span class="loading-letter j">J</span>
+      <span class="loading-amp">&</span>
+      <span class="loading-letter k">K</span>
+      <div class="loading-line"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       FASE 1 — GATEFOLD + SELO DE CERA
+       ════════════════════════════════════════ -->
+  <div id="gatefold-screen" class="paper-texture">
+    <div class="gatefold-container" id="gatefold-container">
+      <div class="gatefold-inner">
+
+        <div class="gatefold-panel left paper-texture">
+          <div class="invite-bg-text">
+            <p class="body-text">Com a benção de Deus e de nossos pais</p>
+            <p class="names" data-cfg="nome1">Kalila</p>
+            <p class="body-text">&</p>
+            <p class="names" data-cfg="nome2">Jhonny</p>
+            <p class="body-text" style="margin-top:1rem">Convidam para celebrar<br>seu casamento</p>
+          </div>
+        </div>
+
+        <div class="gatefold-panel right paper-texture">
+          <div class="invite-bg-text">
+            <p class="body-text" data-cfg="data">19 de Setembro de 2026</p>
+            <p class="body-text" style="margin-top:0.5rem" data-cfg="horario">17 Horas</p>
+            <p class="body-text" style="margin-top:1rem" data-cfg="local">Buffet D' Matos</p>
+            <p class="body-text" data-cfg="endereco">Santo André — SP</p>
+          </div>
+        </div>
+
+        <div class="gatefold-fold-line"></div>
+
+        <div class="gatefold-center">
+          <div class="gatefold-seal-content" id="gatefold-seal-content">
+            <!-- Coração / floral azul Serenity -->
+            <svg class="floral-decoration" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <ellipse cx="130" cy="60" rx="80" ry="30" fill="#dce8f2" opacity="0.5"/>
+              <path d="M130 90 Q110 70 95 55 Q85 45 90 35 Q100 30 110 40 Q120 50 130 60" fill="#b3cee5" opacity="0.7"/>
+              <path d="M130 90 Q150 70 165 55 Q175 45 170 35 Q160 30 150 40 Q140 50 130 60" fill="#b3cee5" opacity="0.7"/>
+              <circle cx="95" cy="38" r="8" fill="#fff" opacity="0.9"/>
+              <circle cx="110" cy="32" r="6" fill="#dce8f2"/>
+              <circle cx="165" cy="38" r="8" fill="#fff" opacity="0.9"/>
+              <circle cx="150" cy="32" r="6" fill="#dce8f2"/>
+              <circle cx="130" cy="28" r="7" fill="#fff"/>
+              <path d="M130 60 L128 90 M120 65 L115 85 M140 65 L145 85" stroke="#8fb4d4" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="75" cy="70" rx="18" ry="8" fill="#a4c3dd" opacity="0.5" transform="rotate(-30 75 70)"/>
+              <ellipse cx="185" cy="70" rx="18" ry="8" fill="#a4c3dd" opacity="0.5" transform="rotate(30 185 70)"/>
+            </svg>
+
+            <button type="button" class="wax-seal" onclick="openInvitation()" aria-label="Clique para abrir o convite">
+              <img src="assets/selo.png" alt="Selo J & K" class="wax-seal-img">
+            </button>
+            <p class="seal-hint">clique para abrir</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       FASE 2 — CONTEÚDO PRINCIPAL
+       ════════════════════════════════════════ -->
+  <main id="main-content" class="paper-texture">
+
+    <!-- Foto início com fade -->
+    <section class="photo-hero" id="photo-inicio">
+      <div class="photo-placeholder">Sua foto aqui</div>
+      <img src="" alt="Kalila e Jhonny" style="display:none">
+      <div class="photo-fade"></div>
+    </section>
+
+    <header class="couple-header">
+      <h1 class="couple-name" data-cfg="nome1">Kalila</h1>
+      <p class="couple-amp">&</p>
+      <h1 class="couple-name" data-cfg="nome2">Jhonny</h1>
+      <p class="couple-subtitle">Você está convidado para o nosso casamento</p>
+
+      <div class="parents-section">
+        <p class="parents-intro">Com a bênção de Deus e de nossos pais</p>
+        <div class="parents-row">
+          <div class="parents-group">
+            <p class="parent-name" data-cfg="pai-noivo-1">Almir Rogerio dos Santos</p>
+            <p class="parent-name" data-cfg="pai-noivo-2">Adriana J M Dos Santos</p>
+          </div>
+          <div class="parents-divider" aria-hidden="true"></div>
+          <div class="parents-group">
+            <p class="parent-name" data-cfg="pai-noiva-1">Joaquim Vieira Rocha</p>
+            <p class="parent-name" data-cfg="pai-noiva-2">Rita M da Silva Rocha</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="verse-block">
+        <p>"Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe."</p>
+        <p class="verse-ref">— Mateus 19:6</p>
+      </div>
+    </header>
+
+    <section class="event-details">
+      <div class="date-block">
+        <span class="date-month">Setembro</span>
+        <div class="date-row">
+          <div class="date-side">Sábado</div>
+          <div class="date-center">
+            <span class="date-day">19</span>
+          </div>
+          <div class="date-side" data-cfg="horario">17 Horas</div>
+        </div>
+        <span class="date-year">2 0 2 6</span>
+      </div>
+
+      <div class="event-location">
+        <h3 data-cfg="local">Buffet D' Matos</h3>
+        <p data-cfg="endereco">Rua Oratório, 3265 - Santo André - SP</p>
+      </div>
+    </section>
+
+    <section class="countdown-box" aria-label="Contagem regressiva">
+      <p class="countdown-label">Contagem Regressiva</p>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-num" id="dias">00</span>
+          <span class="countdown-unit">Dias</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <span class="countdown-num" id="horas">00</span>
+          <span class="countdown-unit">Horas</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <span class="countdown-num" id="minutos">00</span>
+          <span class="countdown-unit">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <span class="countdown-num gold" id="segundos">00</span>
+          <span class="countdown-unit">Seg</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP com Google Sheets -->
+    <section class="rsvp-section" id="rsvp-section">
+      <div class="rsvp-card">
+        <h2 class="rsvp-title text-gold">RSVP</h2>
+        <h3 class="rsvp-subtitle">Confirme sua Presença</h3>
+        <p class="rsvp-deadline">Por favor, responda até <strong data-cfg="prazo-rsvp">06 de Setembro de 2026</strong></p>
+
+        <div id="rsvp-form-area">
+          <div id="rsvp-loading" class="rsvp-loading">
+            <i class="fas fa-spinner fa-spin"></i> Carregando lista de convidados...
+          </div>
+          <div id="rsvp-error" class="rsvp-error" style="display:none"></div>
+          <div id="rsvp-empty" class="rsvp-empty" style="display:none">
+            Nenhum convidado encontrado na planilha.
+          </div>
+
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar por sobrenome ou nome..." oninput="filterFamilies(this.value)">
+          </div>
+
+          <div class="family-list" id="family-list"></div>
+
+          <button type="button" id="confirm-btn" class="btn-primary" onclick="submitConfirmation()">
+            <span>Confirmar Presença</span>
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+
+        <div id="rsvp-success" class="rsvp-success">
+          <div class="icon-circle"><i class="fas fa-check"></i></div>
+          <h3 class="rsvp-title text-gold" style="font-size:2.2rem">Obrigado!</h3>
+          <p>Sua presença foi confirmada com sucesso!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foto final com fade -->
+    <section class="photo-footer" id="photo-final">
+      <div class="photo-placeholder" style="height:100%">Sua foto aqui</div>
+      <img src="" alt="Kalila e Jhonny" style="display:none">
+      <div class="photo-fade-top"></div>
+    </section>
+
+    <footer class="site-footer">
+      <p><span data-cfg="nome1">Kalila</span> & <span data-cfg="nome2">Jhonny</span></p>
+    </footer>
+  </main>
+
+  <!-- Navegação inferior -->
+  <nav class="bottom-nav hidden-nav" id="bottom-nav" aria-label="Navegação">
+    <a href="#" data-link="mapa" target="_blank" rel="noopener" class="nav-item">
+      <div class="nav-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <span class="nav-label">Como<br>Chegar</span>
+    </a>
+    <a href="#rsvp-section" class="nav-item">
+      <div class="nav-icon"><i class="far fa-calendar-check"></i></div>
+      <span class="nav-label">Confirmar<br>Presença</span>
+    </a>
+    <a href="#" data-link="presentes" target="_blank" rel="noopener" class="nav-item">
+      <div class="nav-icon"><i class="fas fa-gift"></i></div>
+      <span class="nav-label">Lista de<br>Presentes</span>
+    </a>
+    <a href="#" data-link="pix" target="_blank" rel="noopener" class="nav-item">
+      <div class="nav-icon nav-icon-pix" aria-hidden="true">
+        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M242.4 292.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+          <path fill="currentColor" d="M169.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+          <path fill="currentColor" d="M315.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+          <path fill="currentColor" d="M242.4 146.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+        </svg>
+      </div>
+      <span class="nav-label">Pix de<br>Presente</span>
+    </a>
+  </nav>
+
+  <audio id="wedding-music" preload="auto"></audio>
+
+  <button type="button" id="music-toggle" class="music-toggle hidden-nav" aria-label="Silenciar música" title="Música">
+    <i class="fas fa-volume-up" id="music-toggle-icon"></i>
+  </button>
+
+  <script src="js/config.js?v=10"></script>
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>
