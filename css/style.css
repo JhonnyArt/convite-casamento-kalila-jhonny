@@ -203,6 +203,25 @@ body.locked { overflow: hidden; }
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Foto translúcida na capa do convite */
+.gatefold-cover-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.gatefold-container.opening .gatefold-cover-photo {
+  opacity: 0;
 }
 
 /* Painéis laterais (portas do convite) */
@@ -211,11 +230,13 @@ body.locked { overflow: hidden; }
   top: 0;
   width: 50%;
   height: 100%;
+  background: rgba(247, 240, 228, 0.78);
   box-shadow: inset 0 0 40px rgba(180, 160, 130, 0.06);
   transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1);
   transform-origin: center;
   overflow: hidden;
   backface-visibility: hidden;
+  z-index: 1;
 }
 
 .gatefold-panel.left {
@@ -301,19 +322,6 @@ body.locked { overflow: hidden; }
   color: var(--text);
 }
 
-/* Florals SVG */
-.floral-decoration {
-  width: min(70vw, 260px);
-  margin-bottom: 1rem;
-  opacity: 0.9;
-  animation: floralFloat 4s ease-in-out infinite;
-}
-
-@keyframes floralFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
 .wax-seal {
   position: relative;
   width: 110px;
@@ -384,10 +392,6 @@ body.locked { overflow: hidden; }
 }
 
 .gatefold-container.opening .wax-seal-img {
-  animation: none;
-}
-
-.gatefold-container.opening .floral-decoration {
   animation: none;
 }
 
@@ -462,7 +466,7 @@ body.locked { overflow: hidden; }
 .couple-name {
   font-family: var(--font-script);
   font-size: clamp(3.5rem, 12vw, 6.5rem);
-  color: #3d3d3d;
+  color: var(--serenity-dark);
   line-height: 1;
 }
 

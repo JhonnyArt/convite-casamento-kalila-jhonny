@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body class="locked paper-texture">
 
@@ -33,8 +33,9 @@
   <div id="gatefold-screen" class="paper-texture">
     <div class="gatefold-container" id="gatefold-container">
       <div class="gatefold-inner">
+        <div class="gatefold-cover-photo" id="gatefold-cover-photo" aria-hidden="true"></div>
 
-        <div class="gatefold-panel left paper-texture">
+        <div class="gatefold-panel left">
           <div class="invite-bg-text">
             <p class="body-text">Com a benção de Deus e de nossos pais</p>
             <p class="names" data-cfg="nome1">Kalila</p>
@@ -44,7 +45,7 @@
           </div>
         </div>
 
-        <div class="gatefold-panel right paper-texture">
+        <div class="gatefold-panel right">
           <div class="invite-bg-text">
             <p class="body-text" data-cfg="data">19 de Setembro de 2026</p>
             <p class="body-text" style="margin-top:0.5rem" data-cfg="horario">17 Horas</p>
@@ -57,21 +58,6 @@
 
         <div class="gatefold-center">
           <div class="gatefold-seal-content" id="gatefold-seal-content">
-            <!-- Coração / floral azul Serenity -->
-            <svg class="floral-decoration" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="130" cy="60" rx="80" ry="30" fill="#dce8f2" opacity="0.5"/>
-              <path d="M130 90 Q110 70 95 55 Q85 45 90 35 Q100 30 110 40 Q120 50 130 60" fill="#b3cee5" opacity="0.7"/>
-              <path d="M130 90 Q150 70 165 55 Q175 45 170 35 Q160 30 150 40 Q140 50 130 60" fill="#b3cee5" opacity="0.7"/>
-              <circle cx="95" cy="38" r="8" fill="#fff" opacity="0.9"/>
-              <circle cx="110" cy="32" r="6" fill="#dce8f2"/>
-              <circle cx="165" cy="38" r="8" fill="#fff" opacity="0.9"/>
-              <circle cx="150" cy="32" r="6" fill="#dce8f2"/>
-              <circle cx="130" cy="28" r="7" fill="#fff"/>
-              <path d="M130 60 L128 90 M120 65 L115 85 M140 65 L145 85" stroke="#8fb4d4" stroke-width="1.5" opacity="0.6"/>
-              <ellipse cx="75" cy="70" rx="18" ry="8" fill="#a4c3dd" opacity="0.5" transform="rotate(-30 75 70)"/>
-              <ellipse cx="185" cy="70" rx="18" ry="8" fill="#a4c3dd" opacity="0.5" transform="rotate(30 185 70)"/>
-            </svg>
-
             <button type="button" class="wax-seal" onclick="openInvitation()" aria-label="Clique para abrir o convite">
               <img src="assets/selo.png" alt="Selo J & K" class="wax-seal-img">
             </button>
@@ -249,6 +235,6 @@
   </button>
 
   <script src="js/config.js?v=10"></script>
-  <script src="js/app.js?v=6"></script>
+  <script src="js/app.js?v=7"></script>
 </body>
 </html>

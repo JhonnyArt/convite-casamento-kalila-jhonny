@@ -46,6 +46,7 @@
 
     setupPhoto('photo-inicio', CONFIG.fotos.inicio, 'Sua foto aqui');
     setupPhoto('photo-final', CONFIG.fotos.final, 'Sua foto aqui');
+    setupGatefoldPhoto();
     setupMusic();
   }
 
@@ -105,6 +106,17 @@
 
   function setText(selector, text) {
     document.querySelectorAll(selector).forEach(el => { el.textContent = text; });
+  }
+
+  function setupGatefoldPhoto() {
+    const el = document.getElementById('gatefold-cover-photo');
+    if (!el || !CONFIG.fotos?.inicio) return;
+
+    const testImg = new Image();
+    testImg.onload = () => {
+      el.style.backgroundImage = `url('${CONFIG.fotos.inicio}')`;
+    };
+    testImg.src = CONFIG.fotos.inicio;
   }
 
   function setupPhoto(id, src, placeholderText) {
