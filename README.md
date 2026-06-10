@@ -88,6 +88,12 @@ No GitHub: **Settings → Pages → Source: main / root → Save**
 
 Seu convite ficará em: `https://SEU_USUARIO.github.io/convite-casamento/`
 
+### Site publicado
+
+**URL do convite:** https://jhonnyart.github.io/convite-casamento-kalila-jhonny/
+
+**Repositório:** https://github.com/JhonnyArt/convite-casamento-kalila-jhonny
+
 ## Paleta de cores
 
 - Serenity Blue: `#b3cee5`
