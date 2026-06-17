@@ -17,14 +17,25 @@ const CONFIG = {
   },
 
   pais: {
-    noivo: ['Almir Rogerio dos Santos', 'Adriana J M Dos Santos'],
-    noiva: ['Joaquim Vieira Rocha', 'Rita M da Silva Rocha'],
+    noivo: ['Almir R dos Santos', 'Adriana J M dos Santos'],
+    noiva: ['Joaquim V Rocha', 'Rita Maria S Rocha'],
   },
 
   links: {
     mapa: 'https://www.google.com/maps/dir/?api=1&destination=Rua+Orat%C3%B3rio,+3265,+Santo+Andr%C3%A9+-+SP',
     listaPresentes: 'https://www.querodecasamento.com.br/lista-de-casamento/kalila-jhonny',
-    pix: 'https://nubank.com.br/cobrar/1hhp38/6a24e36e-cfe8-4d66-b30f-d21b57825b76',
+    pix: 'pix.html',
+  },
+
+  pix: {
+    codigoCopiaCola:
+      '00020126580014BR.GOV.BCB.PIX0136cc2b25f0-47de-421e-8cc6-d4e9340576655204000053039865802BR5918Kalila Silva Rocha6009SAO PAULO62140510U573GjcAAQ630415EAw',
+    titular: 'Kalila Silva Rocha',
+    chaveLabel: 'Chave Aleatória',
+    banco: '260 — Nu Pagamentos S.A. — Instituição de Pagamento',
+    identificador: 'U573GjcAAQ',
+    qrImage: 'assets/pix-qr.png',
+    fotoTopo: 'assets/foto-pix-top.png',
   },
 
   fotos: {

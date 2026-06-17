@@ -1,0 +1,31 @@
+/* Transições suaves entre páginas (SPA) */
+
+#spa-viewport {
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+#spa-viewport.spa-exit {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+#spa-viewport.spa-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+#spa-persistent {
+  position: relative;
+  z-index: 60;
+  pointer-events: none;
+}
+
+#spa-persistent > * {
+  pointer-events: auto;
+}
+
+#spa-persistent #loading-screen.hidden,
+#spa-persistent .hidden-nav {
+  pointer-events: none;
+}

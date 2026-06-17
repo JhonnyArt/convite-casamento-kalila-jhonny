@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Confirme sua presença — Kalila & Jhonny">
+  <meta name="theme-color" content="#7a9fbe">
+  <title>Confirme sua Presença — Kalila & Jhonny</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/rsvp.css?v=4">
+  <link rel="stylesheet" href="css/transitions.css?v=2">
+</head>
+<body class="paper-texture">
+
+  <div id="spa-persistent">
+    <div id="loading-screen" class="hidden paper-texture" aria-hidden="true">
+      <div class="loading-monogram">
+        <span class="loading-name name1" data-cfg="nome1">Kalila</span>
+        <div class="loading-names-row">
+          <span class="loading-amp">&</span>
+          <span class="loading-name name2" data-cfg="nome2">Jhonny</span>
+        </div>
+        <div class="loading-line"></div>
+      </div>
+    </div>
+    <audio id="wedding-music" preload="auto"></audio>
+    <button type="button" id="music-toggle" class="music-toggle hidden-nav" aria-label="Silenciar música" title="Música">
+      <i class="fas fa-volume-up" id="music-toggle-icon"></i>
+    </button>
+    <nav class="bottom-nav hidden-nav" id="bottom-nav" aria-label="Navegação">
+      <a href="rsvp.html" class="nav-item nav-item-active">
+        <div class="nav-icon"><i class="far fa-calendar-check"></i></div>
+        <span class="nav-label">Confirmar<br>Presença</span>
+      </a>
+      <a href="#" data-link="mapa" target="_blank" rel="noopener" class="nav-item">
+        <div class="nav-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span class="nav-label">Como<br>Chegar</span>
+      </a>
+      <a href="#" data-link="presentes" target="_blank" rel="noopener" class="nav-item">
+        <div class="nav-icon"><i class="fas fa-gift"></i></div>
+        <span class="nav-label">Lista de<br>Presentes</span>
+      </a>
+      <a href="pix.html" class="nav-item">
+        <div class="nav-icon nav-icon-pix" aria-hidden="true">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M242.4 292.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M169.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M315.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M242.4 146.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+          </svg>
+        </div>
+        <span class="nav-label">Pix de<br>Presente</span>
+      </a>
+    </nav>
+  </div>
+
+  <div id="spa-viewport">
+
+  <a href="index.html" class="rsvp-back-link">
+    <i class="fas fa-arrow-left"></i> Voltar ao convite
+  </a>
+
+  <main class="rsvp-page">
+    <div class="rsvp-container">
+
+      <header class="rsvp-header">
+        <h1 class="rsvp-header-title">Confirme sua Presença</h1>
+        <p class="rsvp-header-deadline">
+          Por favor, responda até <strong data-cfg="prazo-rsvp">06 de Setembro de 2026</strong>
+        </p>
+      </header>
+
+      <div id="rsvp-loading-state" class="rsvp-loading-state">
+        <i class="fas fa-spinner fa-spin"></i> Carregando lista de convidados...
+      </div>
+
+      <div id="rsvp-global-error" class="rsvp-global-error rsvp-hidden"></div>
+
+      <div id="rsvp-app" class="rsvp-hidden">
+
+        <!-- Passo 1: Busca -->
+        <div id="rsvp-step-search" class="rsvp-step">
+          <div class="rsvp-search-wrap">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="rsvp-search-input"
+              class="rsvp-search-input"
+              placeholder="Buscar por nome ou sobrenome"
+              autocomplete="off"
+            >
+          </div>
+          <p id="rsvp-search-hint" class="rsvp-hint rsvp-hidden"></p>
+          <p id="rsvp-not-found" class="rsvp-not-found rsvp-hidden"></p>
+          <div id="rsvp-results" class="rsvp-results"></div>
+        </div>
+
+        <!-- Passo 2: Confirmação por família -->
+        <div id="rsvp-step-family" class="rsvp-step-family rsvp-hidden">
+          <button type="button" id="rsvp-back-search" class="rsvp-step-back">
+            <i class="fas fa-arrow-left"></i> Voltar
+          </button>
+          <div id="rsvp-family-error" class="rsvp-error-box rsvp-hidden"></div>
+          <div id="rsvp-family-card" class="rsvp-family-card"></div>
+          <button type="button" id="rsvp-submit-btn" class="rsvp-submit-btn">
+            Confirmar Presença
+            <i class="fas fa-check"></i>
+          </button>
+          <p id="rsvp-all-confirmed-msg" class="rsvp-all-confirmed-msg rsvp-hidden" hidden>
+            <i class="fas fa-check-circle"></i> Todos os convidados desta família já confirmaram presença.
+          </p>
+          <p id="rsvp-young-note" class="rsvp-young-note rsvp-hidden" hidden>
+            * A confirmação de presença é necessária apenas para adultos e crianças maiores de 10 anos.
+          </p>
+        </div>
+
+        <!-- Passo 3: Sucesso -->
+        <div id="rsvp-step-success" class="rsvp-success-step rsvp-hidden">
+          <div class="rsvp-success-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h2 class="rsvp-success-title">Obrigado!</h2>
+          <p id="rsvp-success-text" class="rsvp-success-text">
+            Sua presença foi confirmada. Mal podemos esperar para celebrar juntos!
+          </p>
+          <button type="button" id="rsvp-success-restart" class="rsvp-success-back">
+            Voltar ao início
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  </div><!-- /spa-viewport -->
+
+  <script src="js/config.js?v=13"></script>
+  <script src="js/loading.js?v=1"></script>
+  <script src="js/music.js?v=5"></script>
+  <script src="js/navigation.js?v=3"></script>
+  <script src="js/guests-reference.js?v=1"></script>
+  <script src="js/rsvp.js?v=5"></script>
+</body>
+</html>

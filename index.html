@@ -11,21 +11,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/transitions.css?v=2">
 </head>
 <body class="locked paper-texture">
 
-  <!-- ════════════════════════════════════════
-       LOADING (J & K) — após abrir o convite
-       ════════════════════════════════════════ -->
-  <div id="loading-screen" class="hidden paper-texture" aria-hidden="true">
-    <div class="loading-monogram">
-      <span class="loading-letter j">J</span>
-      <span class="loading-amp">&</span>
-      <span class="loading-letter k">K</span>
-      <div class="loading-line"></div>
+  <div id="spa-persistent">
+    <div id="loading-screen" class="hidden paper-texture" aria-hidden="true">
+      <div class="loading-monogram">
+        <span class="loading-name name1" data-cfg="nome1">Kalila</span>
+        <div class="loading-names-row">
+          <span class="loading-amp">&</span>
+          <span class="loading-name name2" data-cfg="nome2">Jhonny</span>
+        </div>
+        <div class="loading-line"></div>
+      </div>
     </div>
+    <audio id="wedding-music" preload="auto"></audio>
+    <button type="button" id="music-toggle" class="music-toggle hidden-nav" aria-label="Silenciar música" title="Música">
+      <i class="fas fa-volume-up" id="music-toggle-icon"></i>
+    </button>
+    <nav class="bottom-nav hidden-nav" id="bottom-nav" aria-label="Navegação">
+      <a href="rsvp.html" class="nav-item">
+        <div class="nav-icon"><i class="far fa-calendar-check"></i></div>
+        <span class="nav-label">Confirmar<br>Presença</span>
+      </a>
+      <a href="#" data-link="mapa" target="_blank" rel="noopener" class="nav-item">
+        <div class="nav-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span class="nav-label">Como<br>Chegar</span>
+      </a>
+      <a href="#" data-link="presentes" target="_blank" rel="noopener" class="nav-item">
+        <div class="nav-icon"><i class="fas fa-gift"></i></div>
+        <span class="nav-label">Lista de<br>Presentes</span>
+      </a>
+      <a href="pix.html" class="nav-item">
+        <div class="nav-icon nav-icon-pix" aria-hidden="true">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M242.4 292.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M169.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M315.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+            <path fill="currentColor" d="M242.4 146.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
+          </svg>
+        </div>
+        <span class="nav-label">Pix de<br>Presente</span>
+      </a>
+    </nav>
   </div>
+
+  <div id="spa-viewport">
 
   <!-- ════════════════════════════════════════
        FASE 1 — GATEFOLD + SELO DE CERA
@@ -82,22 +115,11 @@
     </section>
 
     <header class="couple-header">
-      <h1 class="couple-name" data-cfg="nome1">Kalila</h1>
-      <p class="couple-amp">&</p>
-      <h1 class="couple-name" data-cfg="nome2">Jhonny</h1>
-
-      <div class="parents-section">
-        <p class="parents-intro">Com a bênção de Deus e de nossos pais</p>
-        <div class="parents-row">
-          <div class="parents-group">
-            <p class="parent-name" data-cfg="pai-noivo-1">Almir Rogerio dos Santos</p>
-            <p class="parent-name" data-cfg="pai-noivo-2">Adriana J M Dos Santos</p>
-          </div>
-          <div class="parents-divider" aria-hidden="true"></div>
-          <div class="parents-group">
-            <p class="parent-name" data-cfg="pai-noiva-1">Joaquim Vieira Rocha</p>
-            <p class="parent-name" data-cfg="pai-noiva-2">Rita M da Silva Rocha</p>
-          </div>
+      <div class="couple-names">
+        <h1 class="couple-name" data-cfg="nome1">Kalila</h1>
+        <div class="couple-names-row">
+          <span class="couple-amp">&</span>
+          <h1 class="couple-name" data-cfg="nome2">Jhonny</h1>
         </div>
       </div>
 
@@ -106,7 +128,21 @@
         <p class="verse-ref">— Mateus 19:6</p>
       </div>
 
-      <p class="couple-subtitle">Você está convidado para o nosso casamento</p>
+      <div class="parents-section">
+        <p class="parents-intro">Com as bençãos de Deus e de nossos pais</p>
+        <div class="parents-row">
+          <div class="parents-group">
+            <p class="parent-name" data-cfg="pai-noivo-1">Almir R dos Santos</p>
+            <p class="parent-name" data-cfg="pai-noivo-2">Adriana J M dos Santos</p>
+          </div>
+          <div class="parents-group">
+            <p class="parent-name" data-cfg="pai-noiva-1">Joaquim V Rocha</p>
+            <p class="parent-name" data-cfg="pai-noiva-2">Rita Maria S Rocha</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="couple-subtitle">Convidam para a cerimônia de seu casamento</p>
     </header>
 
     <section class="event-details">
@@ -153,43 +189,6 @@
       </div>
     </section>
 
-    <!-- RSVP com Google Sheets -->
-    <section class="rsvp-section" id="rsvp-section">
-      <div class="rsvp-card">
-        <h2 class="rsvp-title text-gold">RSVP</h2>
-        <h3 class="rsvp-subtitle">Confirme sua Presença</h3>
-        <p class="rsvp-deadline">Por favor, responda até <strong data-cfg="prazo-rsvp">06 de Setembro de 2026</strong></p>
-
-        <div id="rsvp-form-area">
-          <div id="rsvp-loading" class="rsvp-loading">
-            <i class="fas fa-spinner fa-spin"></i> Carregando lista de convidados...
-          </div>
-          <div id="rsvp-error" class="rsvp-error" style="display:none"></div>
-          <div id="rsvp-empty" class="rsvp-empty" style="display:none">
-            Nenhum convidado encontrado na planilha.
-          </div>
-
-          <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar por sobrenome ou nome..." oninput="filterFamilies(this.value)">
-          </div>
-
-          <div class="family-list" id="family-list"></div>
-
-          <button type="button" id="confirm-btn" class="btn-primary" onclick="submitConfirmation()">
-            <span>Confirmar Presença</span>
-            <i class="fas fa-check"></i>
-          </button>
-        </div>
-
-        <div id="rsvp-success" class="rsvp-success">
-          <div class="icon-circle"><i class="fas fa-check"></i></div>
-          <h3 class="rsvp-title text-gold" style="font-size:2.2rem">Obrigado!</h3>
-          <p>Sua presença foi confirmada com sucesso!</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Foto final com fade -->
     <section class="photo-footer" id="photo-final">
       <div class="photo-placeholder" style="height:100%">Sua foto aqui</div>
@@ -202,40 +201,12 @@
     </footer>
   </main>
 
-  <!-- Navegação inferior -->
-  <nav class="bottom-nav hidden-nav" id="bottom-nav" aria-label="Navegação">
-    <a href="#" data-link="mapa" target="_blank" rel="noopener" class="nav-item">
-      <div class="nav-icon"><i class="fas fa-map-marker-alt"></i></div>
-      <span class="nav-label">Como<br>Chegar</span>
-    </a>
-    <a href="#rsvp-section" class="nav-item">
-      <div class="nav-icon"><i class="far fa-calendar-check"></i></div>
-      <span class="nav-label">Confirmar<br>Presença</span>
-    </a>
-    <a href="#" data-link="presentes" target="_blank" rel="noopener" class="nav-item">
-      <div class="nav-icon"><i class="fas fa-gift"></i></div>
-      <span class="nav-label">Lista de<br>Presentes</span>
-    </a>
-    <a href="#" data-link="pix" target="_blank" rel="noopener" class="nav-item">
-      <div class="nav-icon nav-icon-pix" aria-hidden="true">
-        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-          <path fill="currentColor" d="M242.4 292.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
-          <path fill="currentColor" d="M169.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
-          <path fill="currentColor" d="M315.4 219.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
-          <path fill="currentColor" d="M242.4 146.5c5.4-5.4 14.6-5.4 20 0l32.1 32.1c6.7 6.7 6.7 17.5 0 24.2l-32.1 32.1c-5.4 5.4-14.6 5.4-20 0l-32.1-32.1c-6.7-6.7-6.7-17.5 0-24.2l32.1-32.1z"/>
-        </svg>
-      </div>
-      <span class="nav-label">Pix de<br>Presente</span>
-    </a>
-  </nav>
+  </div><!-- /spa-viewport -->
 
-  <audio id="wedding-music" preload="auto"></audio>
-
-  <button type="button" id="music-toggle" class="music-toggle hidden-nav" aria-label="Silenciar música" title="Música">
-    <i class="fas fa-volume-up" id="music-toggle-icon"></i>
-  </button>
-
-  <script src="js/config.js?v=10"></script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/config.js?v=13"></script>
+  <script src="js/loading.js?v=1"></script>
+  <script src="js/music.js?v=5"></script>
+  <script src="js/navigation.js?v=3"></script>
+  <script src="js/app.js?v=14"></script>
 </body>
 </html>

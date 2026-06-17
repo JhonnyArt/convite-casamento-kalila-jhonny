@@ -21,13 +21,13 @@ const ABAS = {
 };
 
 const COLUNAS = {
-  CONVIDADOS: ['ID', 'Sobrenome', 'Nomes'],
-  CONFIRMADOS: ['ID', 'Sobrenome', 'Nome', 'Data', 'Confirmado'],
+  CONVIDADOS: ['ID', 'Sobrenome', 'Nomes', 'Possui crianças < 10 anos?'],
+  CONFIRMADOS: ['ID', 'Sobrenome', 'Nome', 'Data', 'Confirmado', 'Nome Informado'],
 };
 
 const EXEMPLOS_CONVIDADOS = [
-  [1, 'Silva', 'João Silva, Maria Silva'],
-  [2, 'Santos', 'Ana Santos, Pedro Santos, Lucas Santos'],
+  [1, 'Silva', 'João Silva, Maria Silva', 'Não'],
+  [2, 'Santos', 'Ana Santos, Pedro Santos, Lucas Santos', 'Sim'],
 ];
 
 // ── Endpoints ────────────────────────────────────────────────
@@ -162,6 +162,9 @@ function formatHeaderRow_(sheet, numCols) {
       'Nomes separados por vírgula, ponto-e-vírgula ou pipe (|).\n' +
       'Exemplo: João Silva, Maria Silva'
     );
+    if (numCols >= 4) {
+      sheet.getRange(1, 4).setNote('Sim ou Não');
+    }
   }
 
   if (sheet.getName() === ABAS.CONFIRMADOS) {
@@ -172,6 +175,22 @@ function formatHeaderRow_(sheet, numCols) {
 
 // ── Convidados ───────────────────────────────────────────────
 
+function parseSimNao_(value) {
+  if (value === true || value === 1) return true;
+  var s = String(value || '').trim().toLowerCase();
+  if (s === 'sim' || s === 's' || s === 'yes' || s === 'true') return true;
+  return false;
+}
+
+function findColCriancasMenores_(headers) {
+  for (var i = 0; i < headers.length; i++) {
+    var h = String(headers[i] || '').trim().toLowerCase();
+    if (h.indexOf('crianc') !== -1 && h.indexOf('10') !== -1) return i;
+    if (h === 'possui criancas < 10 anos?') return i;
+  }
+  return headers.length > 3 ? 3 : -1;
+}
+
 function getGuests() {
   setupPlanilha();
 
@@ -181,9 +200,15 @@ function getGuests() {
 
   const rows = convidadosSheet.getDataRange().getValues();
   const guests = [];
+  const headers = rows.length > 0 ? rows[0] : [];
+  const colCriancas = findColCriancasMenores_(headers);
 
   for (let i = 1; i < rows.length; i++) {
-    const [id, sobrenome, nomesStr] = rows[i];
+    const row = rows[i];
+    const id = row[0];
+    const sobrenome = row[1];
+    const nomesStr = row[2];
+    const criancasMenores = colCriancas >= 0 ? row[colCriancas] : '';
     if (!sobrenome) continue;
 
     const nomes = String(nomesStr)
@@ -195,16 +220,19 @@ function getGuests() {
       id: String(id || i),
       sobrenome: String(sobrenome).trim(),
       nomes: nomes,
+      criancasMenores: String(criancasMenores || '').trim(),
+      possuiCriancasMenores: parseSimNao_(criancasMenores),
     });
   }
 
   const confirmed = [];
   if (confirmadosSheet && confirmadosSheet.getLastRow() > 1) {
     const confRows = confirmadosSheet.getDataRange().getValues();
-    for (let j = 1; j < confRows.length; j++) {
-      const [confId, , nome] = confRows[j];
-      if (confId && nome) {
-        confirmed.push(String(confId) + '::' + String(nome).trim());
+    for (var j = 1; j < confRows.length; j++) {
+      var confId = confRows[j][0];
+      var nomeOriginal = confRows[j][2];
+      if (confId && nomeOriginal) {
+        confirmed.push(String(confId) + '::' + String(nomeOriginal).trim());
       }
     }
   }
@@ -233,7 +261,8 @@ function confirmGuests(confirmations) {
   confirmations.forEach(function (c) {
     const key = String(c.familyId) + '::' + String(c.nome);
     if (!existingKeys[key]) {
-      sheet.appendRow([c.familyId, c.sobrenome, c.nome, now, 'Sim']);
+      var nomeInformado = c.nomeConfirmado ? String(c.nomeConfirmado).trim() : '';
+      sheet.appendRow([c.familyId, c.sobrenome, c.nome, now, 'Sim', nomeInformado]);
       existingKeys[key] = true;
       added++;
     }
