@@ -80,6 +80,8 @@
     navigating = true;
 
     try {
+      await animateViewportExit(viewport);
+
       const fetchPromise = fetch(page + '?_=' + Date.now()).then(res => res.text());
       const loadingPromise = window.WeddingLoading?.show() ?? Promise.resolve();
 
@@ -96,6 +98,8 @@
       viewport.innerHTML = newViewport.innerHTML;
       document.body.className = doc.body.className;
       window.scrollTo(0, 0);
+
+      await animateViewportEnter(viewport);
 
       await runPageInit(page);
       syncPersistentUI(page);
@@ -165,6 +169,23 @@
 
   function delay(ms) {
     return new Promise(r => setTimeout(r, ms));
+  }
+
+  function animateViewportExit(viewport) {
+    if (!viewport) return Promise.resolve();
+    viewport.classList.remove('spa-enter');
+    viewport.classList.add('spa-exit');
+    return delay(220);
+  }
+
+  function animateViewportEnter(viewport) {
+    if (!viewport) return Promise.resolve();
+    viewport.classList.remove('spa-exit');
+    viewport.classList.add('spa-enter');
+    return delay(20).then(() => {
+      viewport.classList.remove('spa-enter');
+      return delay(260);
+    });
   }
 
   function syncPersistentUI(page) {
