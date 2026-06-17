@@ -5,10 +5,12 @@
   'use strict';
 
   const STORAGE_OPENED = 'wedding_invitation_opened';
+  const state = {
+    opened: false,
+  };
 
   window.initIndexPage = function initIndexPage() {
     applyConfig();
-    bindSeal();
 
     if (sessionStorage.getItem(STORAGE_OPENED) === '1' && isGatefoldVisible()) {
       restoreOpenedInvitation(false);
@@ -27,16 +29,6 @@
     const gatefold = document.getElementById('gatefold-screen');
     if (!gatefold) return false;
     return !gatefold.classList.contains('hidden') && gatefold.style.display !== 'none';
-  }
-
-  function bindSeal() {
-    const seal = document.querySelector('.wax-seal');
-    if (!seal || seal.dataset.bound === '1') return;
-    seal.dataset.bound = '1';
-    seal.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.openInvitation();
-    });
   }
 
   function applyConfig() {
@@ -137,6 +129,8 @@
 
   window.openInvitation = function () {
     if (!isGatefoldVisible()) return;
+    if (state.opened) return;
+    state.opened = true;
 
     sessionStorage.setItem(STORAGE_OPENED, '1');
 
