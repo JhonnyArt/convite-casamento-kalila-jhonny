@@ -340,16 +340,16 @@ body.locked { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.75rem 1.25rem;
   text-align: center;
-  opacity: 0.18;
+  opacity: 0.38;
   pointer-events: none;
-  line-height: 1.8;
+  line-height: 1.65;
   transition: opacity 0.9s ease 0.25s;
 }
 
 .gatefold-container.opening .invite-bg-text {
-  opacity: 0.55;
+  opacity: 0.68;
 }
 
 .invite-bg-text .names {
@@ -361,10 +361,21 @@ body.locked { overflow: hidden; }
 
 .invite-bg-text .body-text {
   font-family: var(--font-serif);
-  font-size: clamp(0.78rem, 2.8vw, 0.95rem);
-  letter-spacing: 0.08em;
+  font-size: clamp(0.9rem, 3.4vw, 1.08rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text);
+}
+
+.invite-bg-text .gatefold-invite-line {
+  text-transform: none;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  font-size: clamp(0.85rem, 3vw, 1.02rem);
+  line-height: 1.5;
+  max-width: 95%;
 }
 
 .wax-seal {
@@ -578,7 +589,7 @@ body.locked { overflow: hidden; }
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.2rem, 1.2vw, 1rem);
+  gap: clamp(1.25rem, 6vw, 3.5rem);
 }
 
 .parents-group {
@@ -588,7 +599,7 @@ body.locked { overflow: hidden; }
 
 .parent-name {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 3.8vw, 1.1rem);
   color: var(--gold);
   line-height: 1.45;
   letter-spacing: 0;
@@ -1142,12 +1153,8 @@ body.locked { overflow: hidden; }
 
 /* Responsivo — iPhone e telas compactas */
 @media (max-width: 480px) {
-  .parent-name {
-    font-size: 0.95rem;
-  }
-
   .parents-row {
-    gap: 0.25rem;
+    gap: clamp(1rem, 5vw, 2rem);
   }
 
   .date-side { min-width: 72px; font-size: 0.92rem; }
@@ -1174,12 +1181,6 @@ body.locked { overflow: hidden; }
   .wax-seal {
     width: 96px;
     height: 96px;
-  }
-}
-
-@media (max-width: 360px) {
-  .parent-name {
-    font-size: 0.88rem;
   }
 }
 
