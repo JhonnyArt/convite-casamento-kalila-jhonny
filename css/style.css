@@ -348,6 +348,11 @@ body.locked { overflow: hidden; }
   transition: opacity 0.9s ease 0.25s;
 }
 
+.gatefold-panel.right .invite-bg-text {
+  justify-content: flex-start;
+  padding-top: clamp(7rem, 42%, 11rem);
+}
+
 .gatefold-container.opening .invite-bg-text {
   opacity: 0.68;
 }
@@ -376,11 +381,6 @@ body.locked { overflow: hidden; }
   font-size: clamp(0.85rem, 3vw, 1.02rem);
   line-height: 1.5;
   max-width: 95%;
-}
-
-.gatefold-panel.right .invite-bg-text {
-  justify-content: center;
-  padding-bottom: clamp(4rem, 14vh, 6.5rem);
 }
 
 .wax-seal {
