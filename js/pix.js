@@ -8,8 +8,7 @@
   const COPY_RESET_MS = 3500;
   const COPY_DEFAULT_LABEL = 'Copiar código Pix';
   const COPY_SUCCESS_HTML =
-    '<span class="pix-copy-success-line">Pix copiado.<i class="fas fa-check" aria-hidden="true"></i></span>' +
-    '<span class="pix-copy-blessing">Deus abençoe!</span>';
+    '<span class="pix-copy-success-line">Pix copiado.<i class="fas fa-check" aria-hidden="true"></i></span>';
 
   document.addEventListener('DOMContentLoaded', () => {
     setupMusic();

@@ -16,7 +16,7 @@
   const PAGE_SCRIPTS = {
     'index.html': ['js/app.js?v=17'],
     'rsvp.html': ['js/guests-reference.js?v=1', 'js/rsvp.js?v=7'],
-    'pix.html': ['js/pix.js?v=10'],
+    'pix.html': ['js/pix.js?v=11'],
   };
 
   const PAGE_INIT = {
