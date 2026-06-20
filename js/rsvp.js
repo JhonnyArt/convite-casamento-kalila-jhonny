@@ -37,10 +37,10 @@
 
   function setupHeroPhoto() {
     const src = CONFIG.pix?.fotoTopo || CONFIG.fotos?.inicio || '';
-    setupPhoto('photo-rsvp-top', src, 'Sua foto aqui');
+    setupPhoto('photo-rsvp-top', src);
   }
 
-  function setupPhoto(id, src, placeholderText) {
+  function setupPhoto(id, src) {
     const container = document.getElementById(id);
     if (!container || !src) return;
 
@@ -55,10 +55,7 @@
     };
     testImg.onerror = () => {
       img.style.display = 'none';
-      if (placeholder) {
-        placeholder.style.display = 'flex';
-        placeholder.textContent = placeholderText;
-      }
+      if (placeholder) placeholder.style.display = 'flex';
     };
     testImg.src = src;
   }

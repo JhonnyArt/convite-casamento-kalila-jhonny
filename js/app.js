@@ -54,8 +54,8 @@
     if (mapLink) mapLink.href = CONFIG.links.mapa;
     if (giftLink) giftLink.href = CONFIG.links.listaPresentes;
 
-    setupPhoto('photo-inicio', CONFIG.fotos.inicio, 'Sua foto aqui');
-    setupPhoto('photo-final', CONFIG.fotos.final, 'Sua foto aqui');
+    setupPhoto('photo-inicio', CONFIG.fotos.inicio);
+    setupPhoto('photo-final', CONFIG.fotos.final);
     setupGatefoldPhoto();
     setupMusic();
   }
@@ -107,12 +107,18 @@
     testImg.src = CONFIG.fotos.inicio;
   }
 
-  function setupPhoto(id, src, placeholderText) {
+  function setupPhoto(id, src) {
     const container = document.getElementById(id);
     if (!container) return;
 
     const img = container.querySelector('img');
     const placeholder = container.querySelector('.photo-placeholder');
+
+    if (!src) {
+      if (img) img.style.display = 'none';
+      if (placeholder) placeholder.style.display = 'flex';
+      return;
+    }
 
     const testImg = new Image();
     testImg.onload = () => {
@@ -122,10 +128,7 @@
     };
     testImg.onerror = () => {
       img.style.display = 'none';
-      if (placeholder) {
-        placeholder.style.display = 'flex';
-        placeholder.textContent = placeholderText;
-      }
+      if (placeholder) placeholder.style.display = 'flex';
     };
     testImg.src = src;
   }

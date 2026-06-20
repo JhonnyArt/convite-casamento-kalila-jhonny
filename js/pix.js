@@ -45,7 +45,7 @@
 
   function setupHeroPhoto() {
     const src = CONFIG.pix?.fotoTopo || CONFIG.fotos?.inicio || '';
-    setupPhoto('photo-pix-top', src, 'Sua foto aqui');
+    setupPhoto('photo-pix-top', src);
   }
 
   function setupQrImage() {
@@ -54,7 +54,7 @@
     if (img) img.src = src;
   }
 
-  function setupPhoto(id, src, placeholderText) {
+  function setupPhoto(id, src) {
     const container = document.getElementById(id);
     if (!container || !src) return;
 
@@ -69,10 +69,7 @@
     };
     testImg.onerror = () => {
       img.style.display = 'none';
-      if (placeholder) {
-        placeholder.style.display = 'flex';
-        placeholder.textContent = placeholderText;
-      }
+      if (placeholder) placeholder.style.display = 'flex';
     };
     testImg.src = src;
   }
