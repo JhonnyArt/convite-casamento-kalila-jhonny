@@ -26,12 +26,41 @@
 
   window.initRsvpPage = function initRsvpPage() {
     applyConfig();
+    setupHeroPhoto();
     bindEvents();
     loadGuestList();
   };
 
   function applyConfig() {
     setText('[data-cfg="prazo-rsvp"]', CONFIG.noivos.prazoRSVP);
+  }
+
+  function setupHeroPhoto() {
+    const src = CONFIG.pix?.fotoTopo || CONFIG.fotos?.inicio || '';
+    setupPhoto('photo-rsvp-top', src, 'Sua foto aqui');
+  }
+
+  function setupPhoto(id, src, placeholderText) {
+    const container = document.getElementById(id);
+    if (!container || !src) return;
+
+    const img = container.querySelector('img');
+    const placeholder = container.querySelector('.photo-placeholder');
+
+    const testImg = new Image();
+    testImg.onload = () => {
+      img.src = src;
+      img.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+    };
+    testImg.onerror = () => {
+      img.style.display = 'none';
+      if (placeholder) {
+        placeholder.style.display = 'flex';
+        placeholder.textContent = placeholderText;
+      }
+    };
+    testImg.src = src;
   }
 
   function setText(selector, text) {

@@ -6,18 +6,14 @@
 .rsvp-page {
   min-height: 100vh;
   min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem calc(3rem + var(--bottom-nav-height, 8rem));
+  padding-bottom: var(--bottom-nav-height, 8rem);
 }
 
 .rsvp-back-link {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 10;
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  left: calc(1rem + env(safe-area-inset-left, 0px));
+  z-index: 20;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -29,6 +25,7 @@
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--serenity-light);
   transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .rsvp-back-link:hover {
@@ -36,27 +33,87 @@
   color: #fff;
 }
 
-.rsvp-container {
+/* Foto topo com fade — igual à página Pix */
+.rsvp-photo-hero {
+  position: relative;
   width: 100%;
-  max-width: 420px;
-  background: #fff;
-  border-radius: 24px;
-  padding: 1.75rem 1.5rem 2rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid #eaeaea;
+  overflow: hidden;
+  background: linear-gradient(180deg, #9ecae8 0%, #6aafd4 100%);
+}
+
+.rsvp-photo-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center 40%;
+  max-height: min(52vh, 420px);
+  max-height: min(52dvh, 420px);
+}
+
+.rsvp-photo-hero .photo-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 240, 228, 0) 0%,
+    rgba(247, 240, 228, 0.35) 45%,
+    rgba(247, 240, 228, 0.85) 80%,
+    var(--cream) 100%
+  );
+  pointer-events: none;
+}
+
+.rsvp-photo-hero .photo-placeholder {
+  width: 100%;
+  min-height: 220px;
+  background: linear-gradient(160deg, var(--serenity-light) 0%, var(--serenity) 50%, var(--serenity-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.rsvp-content {
+  padding: 0 1rem 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .rsvp-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: -2.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 5;
+  padding: 0 0.5rem;
+}
+
+.rsvp-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.5rem 1.25rem 1.75rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+  overflow: visible;
 }
 
 .rsvp-header-title {
   font-family: var(--font-script);
   font-size: clamp(2.2rem, 8vw, 2.75rem);
   color: var(--serenity-dark);
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 0.5rem;
+  padding-top: 0.15rem;
 }
 
 .rsvp-header-deadline {

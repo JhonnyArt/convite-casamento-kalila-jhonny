@@ -5,7 +5,11 @@
 (function () {
   'use strict';
 
-  const COPY_RESET_MS = 2500;
+  const COPY_RESET_MS = 3500;
+  const COPY_DEFAULT_LABEL = 'Copiar código Pix';
+  const COPY_SUCCESS_HTML =
+    '<span class="pix-copy-success-line">Pix copiado.<i class="fas fa-check" aria-hidden="true"></i></span>' +
+    '<span class="pix-copy-blessing">Deus abençoe!</span>';
 
   document.addEventListener('DOMContentLoaded', () => {
     setupMusic();
@@ -36,7 +40,7 @@
   }
 
   function getPixCode() {
-    return (CONFIG.pix && CONFIG.pix.codigoCopiaCola) || '';
+    return ((CONFIG.pix && CONFIG.pix.codigoCopiaCola) || '').trim();
   }
 
   function setupHeroPhoto() {
@@ -91,26 +95,43 @@
     if (!code) return;
 
     try {
-      await navigator.clipboard.writeText(code);
-      showCopiedFeedback(btn);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+        showCopiedFeedback(btn);
+        return;
+      }
     } catch {
-      fallbackCopy(code, btn);
+      /* fallback abaixo */
     }
+
+    copyViaTextarea(code, btn);
   }
 
-  function fallbackCopy(text, btn) {
+  function copyViaTextarea(code, btn) {
     const ta = document.createElement('textarea');
-    ta.value = text;
+    ta.value = code;
+    ta.setAttribute('readonly', '');
     ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.left = '0';
     ta.style.opacity = '0';
     document.body.appendChild(ta);
+
+    ta.focus();
     ta.select();
+    ta.setSelectionRange(0, code.length);
+
     try {
-      document.execCommand('copy');
-      showCopiedFeedback(btn);
+      const ok = document.execCommand('copy');
+      if (ok) {
+        showCopiedFeedback(btn);
+      } else {
+        alert('Não foi possível copiar. Tente novamente.');
+      }
     } catch {
-      alert('Não foi possível copiar. Selecione e copie manualmente.');
+      alert('Não foi possível copiar. Tente novamente.');
     }
+
     document.body.removeChild(ta);
   }
 
@@ -119,17 +140,23 @@
 
     const label = document.getElementById('pix-copy-label');
     const icon = document.getElementById('pix-copy-icon');
-    const originalLabel = label ? label.textContent : '';
+    const originalLabel = label ? label.innerHTML : '';
     const originalIcon = icon ? icon.className : '';
 
     btn.classList.add('copied');
-    if (label) label.textContent = 'Código copiado!';
-    if (icon) icon.className = 'fas fa-check';
+    if (label) label.innerHTML = COPY_SUCCESS_HTML;
+    if (icon) {
+      icon.className = 'fas fa-check';
+      icon.style.display = 'none';
+    }
 
     setTimeout(() => {
       btn.classList.remove('copied');
-      if (label) label.textContent = originalLabel || 'Copiar código do QR Code';
-      if (icon) icon.className = originalIcon || 'far fa-copy';
+      if (label) label.innerHTML = originalLabel || COPY_DEFAULT_LABEL;
+      if (icon) {
+        icon.className = originalIcon || 'far fa-copy';
+        icon.style.display = '';
+      }
     }, COPY_RESET_MS);
   }
 })();

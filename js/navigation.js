@@ -9,14 +9,14 @@
 
   const PAGE_STYLES = {
     'index.html': [],
-    'rsvp.html': ['css/rsvp.css?v=4'],
-    'pix.html': ['css/pix.css?v=2'],
+    'rsvp.html': ['css/rsvp.css?v=6'],
+    'pix.html': ['css/pix.css?v=6'],
   };
 
   const PAGE_SCRIPTS = {
     'index.html': ['js/app.js?v=14'],
-    'rsvp.html': ['js/guests-reference.js?v=1', 'js/rsvp.js?v=5'],
-    'pix.html': ['js/pix.js?v=3'],
+    'rsvp.html': ['js/guests-reference.js?v=1', 'js/rsvp.js?v=6'],
+    'pix.html': ['js/pix.js?v=9'],
   };
 
   const PAGE_INIT = {

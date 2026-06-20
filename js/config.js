@@ -13,7 +13,7 @@ const CONFIG = {
     horario: '17 Horas',
     local: "Buffet D' Matos",
     endereco: 'Rua Oratório, 3265 - Santo André - SP',
-    prazoRSVP: '06 de Setembro de 2026',
+    prazoRSVP: '01 de Setembro de 2026',
   },
 
   pais: {
@@ -29,7 +29,7 @@ const CONFIG = {
 
   pix: {
     codigoCopiaCola:
-      '00020126580014BR.GOV.BCB.PIX0136cc2b25f0-47de-421e-8cc6-d4e9340576655204000053039865802BR5918Kalila Silva Rocha6009SAO PAULO62140510U573GjcAAQ630415EAw',
+      '00020126580014BR.GOV.BCB.PIX0136cc2b25f0-47de-421e-8cc6-d4e9340576655204000053039865802BR5918Kalila Silva Rocha6009SAO PAULO62140510U573GjcAAQ630415EA',
     titular: 'Kalila Silva Rocha',
     chaveLabel: 'Chave Aleatória',
     banco: '260 — Nu Pagamentos S.A. — Instituição de Pagamento',
