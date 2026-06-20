@@ -8,7 +8,7 @@ const CONFIG = {
     title: 'Kalila & Jhonny — Convite de Casamento',
     description:
       'Temos a honra de convidar você para a celebração de nosso casamento. 19 de Setembro de 2026 — Santo André, SP.',
-    image: 'assets/foto-inicio.png',
+    image: 'assets/convite-whatsapp.png',
   },
 
   // URL do Web App do Google Apps Script (veja README.md)
