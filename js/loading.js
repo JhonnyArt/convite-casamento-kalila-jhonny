@@ -26,7 +26,7 @@ window.WeddingLoading = (function () {
 
     applyNames();
 
-    loading.querySelectorAll('.loading-name, .loading-amp, .loading-line').forEach(el => {
+    loading.querySelectorAll('.loading-name, .loading-amp').forEach(el => {
       el.style.animation = 'none';
       el.offsetHeight;
       el.style.animation = '';

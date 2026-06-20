@@ -36,7 +36,8 @@
     setText('[data-cfg="nome1"]', c.nome1);
     setText('[data-cfg="nome2"]', c.nome2);
     setText('[data-cfg="data"]', c.data);
-    setText('[data-cfg="horario"]', c.horario);
+    setText('[data-cfg="horario"]', formatHorarioTexto(c.horario));
+    applyEventHorario(c.horario);
     setText('[data-cfg="local"]', c.local);
     setText('[data-cfg="endereco"]', c.endereco);
     setText('[data-cfg="prazo-rsvp"]', c.prazoRSVP);
@@ -61,6 +62,38 @@
 
   function setText(selector, text) {
     document.querySelectorAll(selector).forEach(el => { el.textContent = text; });
+  }
+
+  function formatHorarioTexto(horario) {
+    const { hour, minute } = parseHorario(horario);
+    if (!hour) return horario || '';
+    return minute ? `${hour}:${minute} Hs` : `${hour} horas`;
+  }
+
+  function parseHorario(horario) {
+    const normalized = String(horario || '').trim().toLowerCase().replace('h', ':');
+    const match = normalized.match(/^(\d{1,2})(?::(\d{2}))?/);
+    if (!match) return { hour: '', minute: '' };
+    return {
+      hour: match[1],
+      minute: match[2] || '',
+    };
+  }
+
+  function applyEventHorario(horario) {
+    const el = document.getElementById('event-horario');
+    if (!el) return;
+
+    const { hour, minute } = parseHorario(horario);
+    if (!hour) return;
+
+    const min = minute || '00';
+    el.setAttribute('aria-label', `${hour}:${min}`);
+    el.innerHTML =
+      `<span class="date-time-hour">${hour}</span>` +
+      `<span class="date-time-sep">:</span>` +
+      `<span class="date-time-min">${min}</span>` +
+      `<span class="date-time-suffix"> Hs</span>`;
   }
 
   function setupGatefoldPhoto() {

@@ -2,6 +2,15 @@
  * Configurações do convite — edite este arquivo antes de publicar.
  */
 const CONFIG = {
+  // URL pública do convite (GitHub Pages) — usada na prévia ao compartilhar
+  siteUrl: 'https://jhonnyart.github.io/convite-casamento-kalila-jhonny/',
+  share: {
+    title: 'Kalila & Jhonny — Convite de Casamento',
+    description:
+      'Temos a honra de convidar você para a celebração de nosso casamento. 19 de Setembro de 2026 — Santo André, SP.',
+    image: 'assets/foto-inicio.png',
+  },
+
   // URL do Web App do Google Apps Script (veja README.md)
   APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby8I8RderIrurpY8xx-mqCteExsmMLQsvJVWzsk_k93o059TQRBaR4jkhjvxoFlJtA/exec',
 
@@ -9,8 +18,8 @@ const CONFIG = {
     nome1: 'Kalila',
     nome2: 'Jhonny',
     data: '19 de Setembro de 2026',
-    dataISO: '2026-09-19T17:00:00',
-    horario: '17 Horas',
+    dataISO: '2026-09-19T17:30:00',
+    horario: '17:30',
     local: "Buffet D' Matos",
     endereco: 'Rua Oratório, 3265 - Santo André - SP',
     prazoRSVP: '01 de Setembro de 2026',

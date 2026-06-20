@@ -101,7 +101,8 @@ body.locked { overflow: hidden; }
 .rsvp-deadline strong,
 .rsvp-success .rsvp-title,
 .countdown-num.gold,
-.countdown-sep {
+.countdown-sep,
+.event-location h3 {
   background: linear-gradient(
     165deg,
     var(--gold-seal-light) 0%,
@@ -147,12 +148,13 @@ body.locked { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.15rem;
+  gap: 0.1rem;
   width: min(92vw, 520px);
   max-width: 100%;
-  padding: 0 0.5rem 1.75rem;
+  padding: 0 0.5rem;
   text-align: center;
-  overflow: visible;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
 }
 
 .loading-names-row {
@@ -168,9 +170,12 @@ body.locked { overflow: hidden; }
   color: var(--serenity-dark);
   opacity: 0;
   transform: scale(0.6) translateY(20px);
-  line-height: 1.15;
+  line-height: 1.2;
   max-width: 100%;
   overflow-wrap: anywhere;
+  -webkit-text-size-adjust: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .loading-amp {
@@ -180,15 +185,8 @@ body.locked { overflow: hidden; }
   transform: scale(0);
   align-self: center;
   line-height: 1;
-}
-
-.loading-line {
-  flex-shrink: 0;
-  margin-top: 0.85rem;
-  transform: scaleX(0);
-  width: min(80px, 22vw);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--serenity), transparent);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 #loading-screen.active .loading-name.name1 {
@@ -203,20 +201,12 @@ body.locked { overflow: hidden; }
   animation: letterReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
 }
 
-#loading-screen.active .loading-line {
-  animation: lineExpand 0.8s ease 1.4s forwards;
-}
-
 @keyframes letterReveal {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes ampPop {
   to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes lineExpand {
-  to { transform: scaleX(1); }
 }
 
 /* ============================================================
@@ -553,7 +543,7 @@ body.locked { overflow: hidden; }
   font-style: italic;
   letter-spacing: 0.04em;
   text-transform: none;
-  color: var(--text-muted);
+  color: var(--text);
   margin-top: 0.85rem;
   margin-bottom: 2.25rem;
   padding: 0 1rem;
@@ -594,7 +584,7 @@ body.locked { overflow: hidden; }
 .parent-name {
   font-family: var(--font-serif);
   font-size: clamp(0.85rem, 3.2vw, 1.1rem);
-  color: #555;
+  color: var(--gold);
   line-height: 1.5;
   letter-spacing: 0.01em;
   word-break: break-word;
@@ -672,6 +662,35 @@ body.locked { overflow: hidden; }
   text-align: center;
 }
 
+.date-side.date-time {
+  text-transform: none;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(88px, 26vw, 118px);
+}
+
+.date-time-hour,
+.date-time-min {
+  font-weight: 400;
+}
+
+.date-time-sep {
+  opacity: 0.55;
+  font-weight: 300;
+  padding: 0 0.08em;
+  letter-spacing: 0;
+}
+
+.date-time-suffix {
+  font-size: 0.82em;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  margin-left: 0.15em;
+}
+
 .date-center {
   display: flex;
   align-items: center;
@@ -712,7 +731,6 @@ body.locked { overflow: hidden; }
 .event-location h3 {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--text);
 }
 
 .event-location p {
