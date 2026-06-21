@@ -101,8 +101,7 @@ body.locked { overflow: hidden; }
 .rsvp-deadline strong,
 .rsvp-success .rsvp-title,
 .countdown-num.gold,
-.countdown-sep,
-.event-location h3 {
+.countdown-sep {
   background: linear-gradient(
     165deg,
     var(--gold-seal-light) 0%,
@@ -151,17 +150,20 @@ body.locked { overflow: hidden; }
   gap: 0.1rem;
   width: min(92vw, 520px);
   max-width: 100%;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0.35rem;
   text-align: center;
+  overflow: visible;
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
 }
 
 .loading-names-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   gap: 0.45rem;
+  overflow: visible;
+  padding-bottom: 0.2em;
 }
 
 .loading-name {
@@ -170,12 +172,16 @@ body.locked { overflow: hidden; }
   color: var(--serenity-dark);
   opacity: 0;
   transform: scale(0.6) translateY(20px);
-  line-height: 1.2;
+  line-height: 1.45;
   max-width: 100%;
+  overflow: visible;
   overflow-wrap: anywhere;
+  padding-bottom: 0.08em;
   -webkit-text-size-adjust: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+}
+
+.loading-name.name2 {
+  padding-bottom: 0.22em;
 }
 
 .loading-amp {
@@ -183,10 +189,9 @@ body.locked { overflow: hidden; }
   font-size: clamp(1.8rem, 5.5vw, 2.8rem);
   opacity: 0;
   transform: scale(0);
-  align-self: center;
+  align-self: baseline;
   line-height: 1;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  overflow: visible;
 }
 
 #loading-screen.active .loading-name.name1 {
@@ -202,7 +207,14 @@ body.locked { overflow: hidden; }
 }
 
 @keyframes letterReveal {
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.6) translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
 }
 
 @keyframes ampPop {
@@ -750,7 +762,8 @@ body.locked { overflow: hidden; }
 
 .event-location h3 {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--gold);
 }
 
 .event-location p {
@@ -1168,6 +1181,16 @@ body.locked { overflow: hidden; }
 
   .loading-name {
     font-size: clamp(2.1rem, 9.5vw, 3.6rem);
+    line-height: 1.5;
+    padding-bottom: 0.12em;
+  }
+
+  .loading-name.name2 {
+    padding-bottom: 0.28em;
+  }
+
+  .loading-names-row {
+    padding-bottom: 0.25em;
   }
 
   .loading-amp {
