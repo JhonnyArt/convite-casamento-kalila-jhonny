@@ -777,7 +777,7 @@ body.locked { overflow: hidden; }
 
 .event-location h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--gold);
 }
 
